@@ -57,9 +57,9 @@ new Swiper('.promotion .swiper-container', {
     spaceBetween: 10, // 슬라이드 사이 여백
     centeredSlides: true, // 1번 슬라이드가 가운데 보이기
     loop: true,
-    // autoplay: {
-    //     delay: 5000
-    // },
+    autoplay: {
+        delay: 5000
+    },
     pagination: {
         el: '.promotion .swiper-pagination', // 페이지 번호 요소 선택자
         clickable: true, // 사용자 페이지 번호 요소 제어 가능 여부
@@ -108,3 +108,14 @@ function floatingObject(selector, delay, size) {
 floatingObject('.floating1', 1, 15);
 floatingObject('.floating2', 0.5, 15);
 floatingObject('.floating3', 1.5, 20);
+
+const spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach(function (spyEl) {
+    new ScrollMagic
+        .Scene({
+            triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
+            triggerHook: 0.8
+        })
+        .setClassToggle(spyEl, 'show')
+        .addTo(new ScrollMagic.Controller());
+});
